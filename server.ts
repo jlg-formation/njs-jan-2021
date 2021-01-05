@@ -5,7 +5,7 @@ const api = require("./api");
 console.log("about to start the server");
 
 const app = express();
-const port = 3000;
+let port = 3000;
 const public = "./public";
 
 app.use((req, res, next) => {
