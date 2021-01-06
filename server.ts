@@ -10,6 +10,7 @@ app.set("view engine", "ejs");
 
 let port = 3000;
 const www = "./public";
+const nodeModules = "./node_modules";
 
 app.use((req, res, next) => {
   console.log("req.url: ", req.url);
@@ -20,6 +21,7 @@ app.use("/api", api);
 app.use("/", frontEnd);
 
 app.use(express.static(www));
+app.use("/node_modules", express.static(nodeModules));
 app.use(serveIndex(www));
 
 app.listen(port, () => {
