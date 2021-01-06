@@ -32,26 +32,13 @@
             </tr>
           </thead>
           <tbody>
+            <% for (const article of articles) { %>
             <tr>
-              <td class="name">Tournevis</td>
-              <td class="price">2.55€</td>
-              <td class="qty">234</td>
+              <td class="name"><%= article.name %></td>
+              <td class="price"><%= article.price %>€</td>
+              <td class="qty"><%= article.qty %></td>
             </tr>
-            <tr>
-              <td class="name">Tournevis</td>
-              <td class="price">2.55€</td>
-              <td class="qty">234</td>
-            </tr>
-            <tr>
-              <td class="name">Tournevis</td>
-              <td class="price">2.55€</td>
-              <td class="qty">234</td>
-            </tr>
-            <tr>
-              <td class="name">Tournevis</td>
-              <td class="price">2.55€</td>
-              <td class="qty">234</td>
-            </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
