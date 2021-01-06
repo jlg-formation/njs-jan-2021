@@ -19,7 +19,7 @@ app.post("/actions/article-add", (req, res) => {
   const article = req.body;
   console.log("article: ", article);
   articles.push(article);
-  res.render("pages/index", { articles });
+  res.redirect("/");
 });
 
 app.get("/article/add", (req, res) => {
