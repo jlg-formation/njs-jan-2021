@@ -19,15 +19,15 @@
       <form action="/actions/article-add">
         <label>
           <div>Nom</div>
-          <input type="text" />
+          <input type="text" value="<%= article.name %>" />
         </label>
         <label>
           <div>Prix</div>
-          <input type="number" />
+          <input type="number" value="<%= article.price %>" />
         </label>
         <label>
           <div>Quantité</div>
-          <input type="number" />
+          <input type="number" value="<%= article.qty %>" />
         </label>
         <button>Ajouter</button>
       </form>
