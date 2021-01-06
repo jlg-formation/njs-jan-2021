@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, urlencoded } from "express";
 const app = Router();
 
 const articles = [
@@ -9,7 +9,16 @@ const articles = [
   { name: "Tondeuse à gazon", price: 1234, qty: 123 },
 ];
 
+app.use(urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
+  res.render("pages/index", { articles });
+});
+
+app.post("/actions/article-add", (req, res) => {
+  const article = req.body;
+  console.log("article: ", article);
+  articles.push(article);
   res.render("pages/index", { articles });
 });
 

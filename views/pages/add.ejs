@@ -11,18 +11,18 @@
     <%- include('../layout/header.ejs') %>
     <main>
       <h1>Ajout d'un article</h1>
-      <form action="/actions/article-add">
+      <form action="/actions/article-add" method="POST">
         <label>
           <div>Nom</div>
-          <input type="text" value="<%= article.name %>" />
+          <input type="text" value="<%= article.name %>" name="name" />
         </label>
         <label>
           <div>Prix</div>
-          <input type="number" value="<%= article.price %>" />
+          <input type="number" value="<%= article.price %>" name="price" />
         </label>
         <label>
           <div>Quantité</div>
-          <input type="number" value="<%= article.qty %>" />
+          <input type="number" value="<%= article.qty %>" name="qty" />
         </label>
         <button>Ajouter</button>
       </form>
