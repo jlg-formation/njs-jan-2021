@@ -1,0 +1,13 @@
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  h1 {
+    text-align: center;
+  }
+
+  nav {
+    padding-bottom: 1em;
+  }
+}

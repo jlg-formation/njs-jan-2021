@@ -1,31 +1,15 @@
 @import "/node_modules/normalize.css/normalize.css";
 
+@import "./header.scss";
 @import "./footer.scss";
+@import "./main.scss";
+@import "./button.scss";
+@import "./table.scss";
 
-header {
-  background: #eee;
-  height: 3em;
-  padding: 0 0.5em;
+body {
+  font-family: sans-serif;
   display: flex;
-  align-items: center;
-
-  a {
-    display: flex;
-    align-items: center;
-    text-decoration: inherit;
-    color: inherit;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    img {
-      height: 2.5em;
-      padding-right: 0.5em;
-    }
-
-    span {
-      font-size: 1.3em;
-    }
-  }
+  flex-flow: column;
+  min-height: 100vh;
+  justify-content: space-between;
 }
