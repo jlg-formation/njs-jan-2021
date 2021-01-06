@@ -8,12 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header>
-      <a href="#">
-        <img src="assets/logo.svg" alt="Logo" />
-        <span>Gestion de stock</span>
-      </a>
-    </header>
+    <%- include('../layout/header.ejs') %>
     <main>
       <h1>Ajout d'un article</h1>
       <form action="/actions/article-add">
@@ -32,8 +27,6 @@
         <button>Ajouter</button>
       </form>
     </main>
-    <footer>
-      <a href="#">Mentions Légales</a>
-    </footer>
+    <%- include('../layout/footer.ejs') %>
   </body>
 </html>

@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestion de stock</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header>
-      <a href="#">
-        <img src="assets/logo.svg" alt="Logo" />
-        <span>Gestion de stock</span>
-      </a>
-    </header>
+    <%- include('../layout/header.ejs') %>
     <main>
       <h1>Liste des articles</h1>
       <div class="content">
         <nav>
-          <button>Ajouter</button>
+          <a href="/article/add">
+            <button>Ajouter</button>
+          </a>
           <button>Supprimer</button>
         </nav>
         <table>
@@ -43,8 +41,6 @@
         </table>
       </div>
     </main>
-    <footer>
-      <a href="#">Mentions Légales</a>
-    </footer>
+    <%- include('../layout/footer.ejs') %>
   </body>
 </html>

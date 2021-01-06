@@ -9,5 +9,8 @@ main {
 
   nav {
     padding-bottom: 1em;
+    a {
+      text-decoration: inherit;
+    }
   }
 }
