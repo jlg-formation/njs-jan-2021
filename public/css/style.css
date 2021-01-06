@@ -4,3 +4,7 @@ header {
   background: #eee;
   height: 3em;
 }
+
+header img {
+  height: 2.5em;
+}
