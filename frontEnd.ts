@@ -13,4 +13,14 @@ app.get("/", (req, res) => {
   res.render("pages/index", { articles: articles });
 });
 
+app.get("/article/add", (req, res) => {
+  res.render("pages/add", {
+    article: {
+      name: "Tournevis",
+      price: 2.99,
+      qty: 100,
+    },
+  });
+});
+
 export default app;

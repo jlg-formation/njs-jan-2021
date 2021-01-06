@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion de stock</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#">
+        <img src="assets/logo.svg" alt="Logo" />
+        <span>Gestion de stock</span>
+      </a>
+    </header>
+    <main>
+      <h1>Ajout d'un article</h1>
+      <form action="/actions/article-add">
+        <label>
+          <div>Nom</div>
+          <input type="text" />
+        </label>
+        <label>
+          <div>Prix</div>
+          <input type="number" />
+        </label>
+        <label>
+          <div>Quantité</div>
+          <input type="number" />
+        </label>
+        <button>Ajouter</button>
+      </form>
+    </main>
+    <footer>
+      <a href="#">Mentions Légales</a>
+    </footer>
+  </body>
+</html>
