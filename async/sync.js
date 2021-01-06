@@ -1,6 +1,10 @@
 const fs = require("fs");
 
-fs.appendFileSync("toto.txt", "coucou\n");
-fs.appendFileSync("toto.txt", "coucou\n");
-fs.appendFileSync("toto.txt", "coucou\n");
-fs.appendFileSync("toto.txt", "coucou\n");
+try {
+  fs.appendFileSync("toto.txt", "coucou\n");
+  fs.appendFileSync("toto.txt", "coucou\n");
+  fs.appendFileSync("toto.txt", "coucou\n");
+  fs.appendFileSync("toto.txt", "coucou\n");
+} catch (err) {
+  console.log("err: ", err);
+}
