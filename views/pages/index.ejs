@@ -16,7 +16,7 @@
           <a href="/article/add">
             <button>Ajouter</button>
           </a>
-          <button>Supprimer</button>
+          <button hidden>Supprimer</button>
         </nav>
         <table>
           <caption hidden>
@@ -31,7 +31,7 @@
           </thead>
           <tbody>
             <% for (const article of articles) { %>
-            <tr>
+            <tr onclick="toto();">
               <td class="name"><%= article.name %></td>
               <td class="price"><%= article.price %>€</td>
               <td class="qty"><%= article.qty %></td>
@@ -42,5 +42,6 @@
       </div>
     </main>
     <%- include('../layout/footer.ejs') %>
+    <script src="main.js"></script>
   </body>
 </html>
