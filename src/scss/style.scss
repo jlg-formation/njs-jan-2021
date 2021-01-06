@@ -5,6 +5,11 @@
 @import "./main.scss";
 @import "./button.scss";
 @import "./table.scss";
+@import "./form.scss";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: sans-serif;
