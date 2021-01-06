@@ -1,12 +1,12 @@
-const express = require("express");
-const serveIndex = require("serve-index");
-const api = require("./api");
+import express from "express";
+import serveIndex from "serve-index";
+import api from "./api";
 
 console.log("about to start the server");
 
 const app = express();
 let port = 3000;
-const public = "./public";
+const www = "./public";
 
 app.use((req, res, next) => {
   console.log("req.url: ", req.url);
@@ -15,8 +15,8 @@ app.use((req, res, next) => {
 
 app.use("/api", api);
 
-app.use(express.static(public));
-app.use(serveIndex(public));
+app.use(express.static(www));
+app.use(serveIndex(www));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
