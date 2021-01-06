@@ -10,7 +10,7 @@ const articles = [
 ];
 
 app.get("/", (req, res) => {
-  res.render("pages/index", { articles: articles });
+  res.render("pages/index", { articles });
 });
 
 app.get("/article/add", (req, res) => {
