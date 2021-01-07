@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "outDir": "./public",
-    "removeComments": true
+    "removeComments": true,
+    "module": "ES2015"
   },
   "include": ["src/**/*.ts"]
 }

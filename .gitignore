@@ -1,5 +1,5 @@
 node_modules
 toto.txt
 public/css
-public/main.js
+public/*.js
 data/articles.json

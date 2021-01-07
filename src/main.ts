@@ -1,3 +1,5 @@
+import { Article } from "./Article";
+
 console.log("started");
 
 let selectedArticleIds: string[] = [];
@@ -12,7 +14,7 @@ const setState = (elt: HTMLElement) => {
   selectedArticleIds = [...selectedArticleIds, id];
 };
 
-const toggle = (articleElt: HTMLElement) => {
+globalThis.toggle = (articleElt: HTMLElement) => {
   setState(articleElt);
   redraw();
 };
@@ -34,19 +36,43 @@ function redrawSuppressBtn() {
   elt.hidden = selectedArticleIds.length === 0;
 }
 
-async function removeSelectedArticles() {
-  const response = await fetch("/actions/article-remove", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method: "DELETE",
-    body: JSON.stringify(selectedArticleIds),
-  });
-  const status = response.status;
-  if (status >= 400) {
-    console.error("response: ", response);
+globalThis.removeSelectedArticles = async function () {
+  try {
+    const response = await fetch("/actions/article-remove", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+      body: JSON.stringify(selectedArticleIds),
+    });
+    const status = response.status;
+    if (status >= 400) {
+      console.error("response: ", response);
+      throw new Error("cannot suppress");
+    }
+    selectedArticleIds = [];
+    const responseGet = await fetch("/actions/article-get");
+    const json = await responseGet.json();
+    console.log("json: ", json);
+    refreshArticleList(json);
+  } catch (error) {
     alert("ouch !!! technical error...");
-    return;
   }
-  window.location.href = "/";
+};
+
+function refreshArticleList(json: Article[]) {
+  console.log("json: ", json);
+  const tbody: HTMLElement = document.querySelector("table tbody");
+
+  tbody.innerHTML = json
+    .map(a => {
+      return `
+    <tr onclick="toggle(this);" article-id="${a.id}">
+        <td class="name">${a.name}</td>
+        <td class="price">${a.price}€</td>
+        <td class="qty">${a.qty}</td>
+    </tr>
+      `;
+    })
+    .join("");
 }
