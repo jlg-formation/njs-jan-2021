@@ -48,5 +48,5 @@ async function removeSelectedArticles() {
     alert("ouch !!! technical error...");
     return;
   }
-  selectedArticleIds = [];
+  window.location.href = "/";
 }
