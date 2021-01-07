@@ -1,0 +1,4 @@
+{
+  "$schema": "https://json.schemastore.org/nodemon",
+  "ignore": ["data/articles.json"]
+}
