@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "./public"
+    "outDir": "./public",
+    "removeComments": true
   },
   "include": ["src/**/*.ts"]
 }
