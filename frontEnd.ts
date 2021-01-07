@@ -1,28 +1,28 @@
 import { Router, urlencoded, json } from "express";
-import { addNewArticle, deleteManyArticles, retrieveAllArticles } from "./file";
+import { addNewArticle, deleteManyArticles, retrieveAllArticles } from "./db";
 const app = Router();
 
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
-app.get("/", (req, res) => {
-  res.render("pages/index", { articles: retrieveAllArticles() });
+app.get("/", async (req, res) => {
+  res.render("pages/index", { articles: await retrieveAllArticles() });
 });
 
-app.post("/actions/article-add", (req, res) => {
+app.post("/actions/article-add", async (req, res) => {
   const article = req.body;
-  addNewArticle(article);
+  await addNewArticle(article);
   res.redirect("/");
 });
 
-app.delete("/actions/article-remove", (req, res) => {
+app.delete("/actions/article-remove", async (req, res) => {
   const ids: string[] = req.body;
-  deleteManyArticles(ids);
+  await deleteManyArticles(ids);
   res.status(204).end();
 });
 
-app.get("/actions/article-get", (req, res) => {
-  res.json(retrieveAllArticles());
+app.get("/actions/article-get", async (req, res) => {
+  res.json(await retrieveAllArticles());
 });
 
 app.get("/article/add", (req, res) => {

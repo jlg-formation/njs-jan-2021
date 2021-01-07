@@ -18,11 +18,11 @@ function saveArticles() {
   writeFile(filename, JSON.stringify(articles, null, 2), () => {});
 }
 
-export function retrieveAllArticles() {
-  return articles;
+export async function retrieveAllArticles() {
+  return Promise.resolve(articles);
 }
 
-export function addNewArticle(article: Article) {
+export async function addNewArticle(article: Article) {
   article.id = "a" + nextId;
   nextId++;
   console.log("article: ", article);
@@ -30,7 +30,7 @@ export function addNewArticle(article: Article) {
   saveArticles();
 }
 
-export function deleteManyArticles(ids: string[]) {
+export async function deleteManyArticles(ids: string[]) {
   articles = articles.filter(a => !ids.includes(a.id));
   saveArticles();
 }
