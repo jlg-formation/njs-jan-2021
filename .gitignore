@@ -3,3 +3,5 @@ toto.txt
 public/css
 public/*.js
 data/articles.json
+coverage
+.nyc_output
