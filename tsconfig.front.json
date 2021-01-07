@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "./public",
     "removeComments": true,
-    "module": "ES2015"
+    "module": "ES2015",
+    "moduleResolution": "Node"
   },
   "include": ["src/**/*.ts"]
 }
