@@ -2,3 +2,4 @@ node_modules
 toto.txt
 public/css
 public/main.js
+data/articles.json

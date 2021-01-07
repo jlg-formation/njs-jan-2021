@@ -1,14 +1,18 @@
 import { Router, urlencoded, json } from "express";
 import { Article } from "./src/Article";
+import { readFileSync } from "fs";
+import { resolve } from "path";
 const app = Router();
 
-let articles: Article[] = [
-  { id: "a1", name: "Tournevis cruciforme", price: 4.56, qty: 123 },
-  { id: "a2", name: "Pince", price: 1.45, qty: 123 },
-  { id: "a3", name: "Marteau", price: 2.78, qty: 123 },
-  { id: "a4", name: "Tournevis", price: 2, qty: 123 },
-  { id: "a5", name: "Tondeuse à gazon", price: 1234, qty: 123 },
-];
+const filename = resolve(__dirname, "./data/articles.json");
+
+let articles: Article[] = [];
+try {
+  const str = readFileSync(filename, { encoding: "utf-8" });
+  articles = JSON.parse(str);
+} catch (error) {
+  console.log("no data file found");
+}
 
 let nextId = 6;
 
