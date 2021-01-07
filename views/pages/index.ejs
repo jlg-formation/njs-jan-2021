@@ -31,7 +31,7 @@
           </thead>
           <tbody>
             <% for (const article of articles) { %>
-            <tr onclick="toto();">
+            <tr onclick="toto(this);" article-id="<%= article.id %>">
               <td class="name"><%= article.name %></td>
               <td class="price"><%= article.price %>€</td>
               <td class="qty"><%= article.qty %></td>
