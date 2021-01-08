@@ -53,7 +53,7 @@ export class ArticleServer {
       });
 
       this.server.on("error", err => {
-        debug("err: ", err);
+        console.error("err: ", err);
         reject(err);
       });
     });
@@ -63,6 +63,7 @@ export class ArticleServer {
     return new Promise<void>((resolve, reject) => {
       connection.disconnect().then(() => {
         this.server.close(err => {
+          /* istanbul ignore if  */
           if (err) {
             reject(err);
             return;
