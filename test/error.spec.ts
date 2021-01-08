@@ -19,7 +19,7 @@ describe("Error on Server", function () {
     await server.stop();
   });
 
-  it("should delete all articles", async function () {
+  it("should give an error EADDRINUSE", async function () {
     try {
       const server2 = new ArticleServer({
         port: 5000,
