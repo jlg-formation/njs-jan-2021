@@ -3,7 +3,10 @@
     "outDir": "./public",
     "removeComments": true,
     "module": "ES2015",
-    "moduleResolution": "Node"
+    "target": "ES5",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "sourceMap": true
   },
-  "include": ["src/front/**/*.ts"]
+  "files": ["src/front/main.ts"]
 }
