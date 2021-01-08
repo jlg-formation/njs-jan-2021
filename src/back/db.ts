@@ -1,5 +1,8 @@
 import { Db, MongoClient, ObjectId } from "mongodb";
 import { Article } from "../front/Article";
+import dbg from "debug";
+
+const debug = dbg("gestion-stock:db");
 
 const url = "mongodb://localhost:27017";
 const dbName = "gestion-stock";
@@ -15,7 +18,7 @@ class Connection {
       });
       db = client.db(dbName);
     } catch (err) {
-      console.log("err: ", err);
+      console.error("err: ", err);
       throw err;
     }
   }
@@ -23,7 +26,7 @@ class Connection {
     try {
       await client.close();
     } catch (error) {
-      console.log("error: ", error);
+      console.error("error: ", error);
       throw error;
     }
   }
@@ -46,15 +49,16 @@ export async function addNewArticle(article: Article) {
 }
 
 export async function deleteManyArticles(ids: string[]) {
-  console.log("ids: ", ids);
+  debug("ids: ", ids);
   try {
     const r = await db.collection("articles").deleteMany({
       _id: {
         $in: ids.map(id => new ObjectId(id)),
       },
     });
-    console.log("r: ", r);
+    debug("r: ", r);
   } catch (error) {
-    console.log("error: ", error);
+    console.error("error: ", error);
+    throw error;
   }
 }

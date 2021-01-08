@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
     try {
       res.render("pages/index", { articles: await retrieveAllArticles() });
     } catch (error) {
-      console.log("error: ", error);
+      console.error("error: ", error);
       res.status(500).end();
     }
   })();
@@ -23,7 +23,7 @@ app.post("/actions/article-add", (req, res) => {
       await addNewArticle(article);
       res.redirect("/");
     } catch (error) {
-      console.log("error: ", error);
+      console.error("error: ", error);
       res.status(500).end();
     }
   })();
@@ -36,7 +36,7 @@ app.delete("/actions/article-remove", (req, res) => {
       await deleteManyArticles(ids);
       res.status(204).end();
     } catch (error) {
-      console.log("error: ", error);
+      console.error("error: ", error);
       res.status(500).end();
     }
   })();
@@ -47,7 +47,7 @@ app.get("/actions/article-get", (req, res) => {
     try {
       res.json(await retrieveAllArticles());
     } catch (error) {
-      console.log("error: ", error);
+      console.error("error: ", error);
       res.status(500).end();
     }
   })();

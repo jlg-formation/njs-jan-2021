@@ -4,6 +4,9 @@ import serveIndex from "serve-index";
 import api from "./api";
 import frontEnd from "./frontEnd";
 import { connection } from "./db";
+import dbg from "debug";
+
+const debug = dbg("gestion-stock:ArticleServer");
 
 export interface ArticleServerOpts {
   port: number;
@@ -26,7 +29,7 @@ export class ArticleServer {
     const nodeModules = "./node_modules";
 
     app.use((req, res, next) => {
-      console.log("req.url: ", req.url);
+      debug("req.url: ", req.url);
       next();
     });
 
@@ -50,7 +53,7 @@ export class ArticleServer {
       });
 
       this.server.on("error", err => {
-        console.log("err: ", err);
+        debug("err: ", err);
         reject(err);
       });
     });
