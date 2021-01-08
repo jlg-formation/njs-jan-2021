@@ -1,5 +1,4 @@
 import assert from "assert";
-import fetch from "node-fetch";
 import { ArticleServer } from "../src/back/ArticleServer";
 import { Article } from "../src/front/Article";
 import dbg from "debug";
