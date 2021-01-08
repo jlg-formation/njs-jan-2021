@@ -26,7 +26,6 @@ export class ArticleServer {
     app.set("view engine", "ejs");
 
     const www = "./public";
-    const nodeModules = "./node_modules";
 
     app.use((req, res, next) => {
       debug("req.url: ", req.url);
@@ -37,7 +36,6 @@ export class ArticleServer {
     app.use("/", frontEnd);
 
     app.use(express.static(www));
-    app.use("/node_modules", express.static(nodeModules));
     app.use(serveIndex(www));
 
     this.app = app;
