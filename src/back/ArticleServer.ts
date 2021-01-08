@@ -47,7 +47,6 @@ export class ArticleServer {
     const port = process.env.NJS_SERVER_PORT || this.options.port;
     return new Promise<void>((resolve, reject) => {
       this.server = this.app.listen(port, async () => {
-        console.log(`Example app listening at http://localhost:${port}`);
         await connection.connect();
         resolve();
       });
