@@ -13,6 +13,10 @@ npm i -g pm2
 pm2 start
 ```
 
+## Usage
+
+Open a browser and go to `http://localhost:5000`.
+
 ## Auteur
 
 Jean-Louis GUENEGO <jlguenego@gmail.com>
