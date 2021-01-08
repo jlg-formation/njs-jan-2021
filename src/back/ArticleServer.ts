@@ -1,10 +1,12 @@
 import express, { Express } from "express";
+import { Server } from "http";
 import serveIndex from "serve-index";
 import api from "./api";
 import frontEnd from "./frontEnd";
 
 export class ArticleServer {
   app: Express;
+  server: Server;
   constructor() {
     const app = express();
     app.set("view engine", "ejs");
@@ -27,12 +29,30 @@ export class ArticleServer {
     this.app = app;
   }
 
-  async start() {
+  start() {
     const port = process.env.NJS_SERVER_PORT || 3000;
-    this.app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`);
+    return new Promise<void>((resolve, reject) => {
+      this.server = this.app.listen(port, () => {
+        console.log(`Example app listening at http://localhost:${port}`);
+        resolve();
+      });
+
+      this.server.on("error", err => {
+        console.log("err: ", err);
+        reject(err);
+      });
     });
   }
 
-  async stop() {}
+  stop() {
+    return new Promise<void>((resolve, reject) => {
+      this.server.close(err => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve();
+      });
+    });
+  }
 }
