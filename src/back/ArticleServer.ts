@@ -53,7 +53,7 @@ export class ArticleServer {
       });
 
       this.server.on("error", err => {
-        console.error("err: ", err);
+        debug("err: ", err);
         reject(err);
       });
     });

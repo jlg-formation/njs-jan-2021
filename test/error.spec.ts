@@ -20,6 +20,7 @@ describe("Error on Server", function () {
   });
 
   it("should give an error EADDRINUSE", async function () {
+    this.timeout(15000);
     try {
       const server2 = new ArticleServer({
         port: 5000,

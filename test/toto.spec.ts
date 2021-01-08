@@ -21,6 +21,7 @@ describe("Article API", function () {
   });
 
   it("should delete all articles", async function () {
+    this.timeout(15000);
     const response = await fetch(
       "http://localhost:5000/actions/article-remove",
       {
@@ -35,6 +36,7 @@ describe("Article API", function () {
   });
 
   it("should add one article", async function () {
+    this.timeout(15000);
     const article = { name: "tournevis", price: 2.11, qty: 123 };
     const response = await fetch("http://localhost:5000/actions/article-add", {
       headers: {
@@ -47,6 +49,7 @@ describe("Article API", function () {
   });
 
   it("should return the articles", async function () {
+    this.timeout(15000);
     const response = await fetch("http://localhost:5000/actions/article-get");
     debug("response: ", response);
     json = await response.json();
