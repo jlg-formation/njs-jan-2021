@@ -6,8 +6,8 @@
   "scripts": {
     "test": "nyc mocha",
     "start": "nodemon",
-    "build:css": "sass --watch src/front/scss/style.scss public/css/style.css",
-    "build:js": "tsc --watch --project tsconfig.front.json"
+    "build": "webpack",
+    "build:w": "webpack -w"
   },
   "author": "",
   "license": "ISC",

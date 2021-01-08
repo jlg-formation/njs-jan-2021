@@ -1,11 +1,14 @@
 const path = require("path");
 
+const mode = process.env.MODE === "development" ? "development" : "production";
+
 module.exports = {
   entry: "./src/front/main.ts",
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "public"),
   },
+  mode,
   module: {
     rules: [
       {
