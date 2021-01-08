@@ -1,6 +1,6 @@
 import { readFileSync, writeFile } from "fs";
 import { resolve } from "path";
-import { Article } from "./src/Article";
+import { Article } from "../front/Article";
 
 const filename = resolve(__dirname, "./data/articles.json");
 

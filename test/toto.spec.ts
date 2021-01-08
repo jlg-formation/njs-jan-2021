@@ -1,6 +1,6 @@
 import assert from "assert";
 import fetch from "node-fetch";
-import { Article } from "../src/Article";
+import { Article } from "../src/front/Article";
 describe("Article API", function () {
   it("should return the articles", async function () {
     const server = new ArticleServer();

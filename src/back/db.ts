@@ -1,5 +1,5 @@
-import { Article } from "./src/Article";
 import { MongoClient, ObjectId } from "mongodb";
+import { Article } from "../front/Article";
 
 const url = "mongodb://localhost:27017";
 const dbName = "gestion-stock";
@@ -38,7 +38,7 @@ export async function deleteManyArticles(ids: string[]) {
   try {
     const r = await db.collection("articles").deleteMany({
       _id: {
-        $in: ids.map(id => ObjectId(id)),
+        $in: ids.map(id => new ObjectId(id)),
       },
     });
     console.log("r: ", r);
