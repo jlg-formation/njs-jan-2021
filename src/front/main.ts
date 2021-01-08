@@ -1,4 +1,5 @@
 import { Article } from "./Article";
+import "./scss/style.scss";
 
 console.log("started");
 
