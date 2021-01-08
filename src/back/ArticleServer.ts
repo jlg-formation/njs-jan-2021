@@ -3,11 +3,22 @@ import { Server } from "http";
 import serveIndex from "serve-index";
 import api from "./api";
 import frontEnd from "./frontEnd";
+import { connection } from "./db";
+
+export interface ArticleServerOpts {
+  port: number;
+}
 
 export class ArticleServer {
   app: Express;
   server: Server;
-  constructor() {
+  options: ArticleServerOpts;
+  constructor(opts?: Partial<ArticleServerOpts>) {
+    this.options = {
+      port: 3000,
+      ...opts,
+    };
+
     const app = express();
     app.set("view engine", "ejs");
 
@@ -30,10 +41,11 @@ export class ArticleServer {
   }
 
   start() {
-    const port = process.env.NJS_SERVER_PORT || 3000;
+    const port = process.env.NJS_SERVER_PORT || this.options.port;
     return new Promise<void>((resolve, reject) => {
-      this.server = this.app.listen(port, () => {
+      this.server = this.app.listen(port, async () => {
         console.log(`Example app listening at http://localhost:${port}`);
+        await connection.connect();
         resolve();
       });
 
@@ -46,12 +58,14 @@ export class ArticleServer {
 
   stop() {
     return new Promise<void>((resolve, reject) => {
-      this.server.close(err => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve();
+      connection.disconnect().then(() => {
+        this.server.close(err => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve();
+        });
       });
     });
   }

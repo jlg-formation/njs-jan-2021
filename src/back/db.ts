@@ -1,23 +1,35 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { Db, MongoClient, ObjectId } from "mongodb";
 import { Article } from "../front/Article";
 
 const url = "mongodb://localhost:27017";
 const dbName = "gestion-stock";
 
-let client;
-let db;
-async function init() {
-  try {
-    client = await MongoClient.connect(url, {
-      useUnifiedTopology: true,
-    });
-    db = client.db(dbName);
-  } catch (err) {
-    console.log("err: ", err);
+let client: MongoClient;
+let db: Db;
+
+class Connection {
+  async connect() {
+    try {
+      client = await MongoClient.connect(url, {
+        useUnifiedTopology: true,
+      });
+      db = client.db(dbName);
+    } catch (err) {
+      console.log("err: ", err);
+      throw err;
+    }
+  }
+  async disconnect() {
+    try {
+      await client.close();
+    } catch (error) {
+      console.log("error: ", error);
+      throw error;
+    }
   }
 }
 
-init();
+export const connection = new Connection();
 
 export async function retrieveAllArticles(): Promise<Article[]> {
   const result: any[] = await db.collection("articles").find({}).toArray();

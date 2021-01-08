@@ -1,5 +1,5 @@
 import { Router, urlencoded, json } from "express";
-import { addNewArticle, deleteManyArticles, retrieveAllArticles } from "./file";
+import { addNewArticle, deleteManyArticles, retrieveAllArticles } from "./db";
 const app = Router();
 
 app.use(urlencoded({ extended: true }));
