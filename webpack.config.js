@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const mode = process.env.MODE === "development" ? "development" : "production";
 
@@ -35,4 +36,9 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "src/front/assets", to: "assets" }],
+    }),
+  ],
 };
